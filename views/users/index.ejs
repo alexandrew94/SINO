@@ -1,0 +1,15 @@
+<h1>My Profile:</h1>
+<% databaseEntries.forEach((entry) => { %>
+  <% if (locals.isLoggedIn && locals.currentUser.username === entry.username) { %>
+    <h2>Username: <%- entry.username %></h2>
+    <p>Email: <%- entry.email %></p>
+    <p>Password: <%- entry.password %></p>
+    <form action="/users/<%= entry.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button>Delete</button>
+    </form>
+    <form action="/users/<%= entry.id %>/edit" method="get">
+      <button>Edit</button>
+    </form>
+  <% } %>
+<% }) %>

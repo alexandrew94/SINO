@@ -1,0 +1,5 @@
+<h1>Index of restaurants:</h1>
+<% databaseEntries.forEach((entry) => { %>
+  <h2>Name: <%- entry.name %></h2>
+  <p>Description: <%- entry.description %></p>
+<% }) %>

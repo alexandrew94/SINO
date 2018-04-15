@@ -9,4 +9,51 @@
 // '/restaurants/:id/edit' => GET to edit an existing restaurant (EDIT)
 // '/restaurants/:id/edit' => PUT to submit an edit of an existing restaurant (UPDATE)
 // '/restaurants/:id/delete' => DELETE a restaurant (DELETE)
-//
+
+// A similar routes system will be used for reviews and users.
+
+const router = require('express').Router();
+
+// Home routes
+
+const homes = require('../controllers/homes');
+
+router.route('/')
+  .get(homes.index);
+
+// Resource restaurants
+
+const restaurants = require('../controllers/restaurants');
+
+router.route('/restaurants')
+  .get(restaurants.index);
+
+// Resource users
+
+const users = require('../controllers/users');
+
+router.route('/users')
+  .get(users.index);
+
+router.route('/users/:id')
+  .put(users.update)
+  .delete(users.delete)
+  .get(users.show);
+
+router.route('/users/:id/edit')
+  .get(users.edit);
+
+router.route('/signup')
+  .get(users.new)
+  .post(users.create);
+
+// Sign in
+
+const sessions = require('../controllers/sessions');
+
+router.route('/signin')
+  .get(sessions.new)
+  .post(sessions.create)
+  .delete(sessions.delete);
+
+module.exports = router;

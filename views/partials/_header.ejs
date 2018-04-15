@@ -1,1 +1,18 @@
 <%# This will have header content %>
+<h1>Restaurant Review System</h1>
+<% if (locals.isLoggedIn) {%>
+  <h2>Currently Logged in as <%= locals.currentUser.username %></h2>
+<% } %>
+<a href="/">Home</a>
+<a href="/restaurants">All Restaurants</a>
+<% if (locals.isLoggedIn) {%>
+  <a href="/users">My Profile</a>
+  <form action="/signin" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" name="button">Log out</button>
+  </form>
+<% } else { %>
+  <a href="/signup">Sign Up</a>
+  <a href="/signin">Sign In</a>
+<% } %>
+<hr>

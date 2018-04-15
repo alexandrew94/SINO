@@ -1,0 +1,11 @@
+<% if (messages.danger) { %>
+  <h2>! <%= messages.danger %> !</h2>
+<% } %>
+<h1>Sign in</h1>
+<form action="signin" method="post">
+  <label for="username_field">Username:</label>
+  <input type="text" name="username" id="username_field">
+  <label for="password_field">Password:</label>
+  <input type="password" name="password" id="password_field">
+  <button type="submit" name="button">Submit</button>
+</form>
