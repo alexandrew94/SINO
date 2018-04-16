@@ -5,10 +5,12 @@
 <h1>Signup form</h1>
 <form action="signup" method="post">
   <label for="username_field">Username:</label>
-  <input type="text" name="username" id="username_field">
+  <input type="text" name="username" id="username_field" required>
   <label for="email_field">Email:</label>
-  <input type="email" name="email" id="email_field">
+  <input type="email" name="email" id="email_field" required>
   <label for="password_field">Password:</label>
-  <input type="password" name="password" id="password_field">
+  <input type="password" name="password" id="password_field" required>
+  <label for="confirm_password_field">Confirm Password:</label>
+  <input type="password" name="confirm_password" id="confirm_password_field" required>
   <button type="submit" name="button">Submit</button>
 </form>

@@ -18,10 +18,10 @@ function usersCreate(req, res) {
     .create(req.body)
     .then((user) => {
       req.session.userId = user._id;
-      return res.redirect('users');
+      return res.status(200).render('home', { messages: 'Sign up successful!' });
     })
     .catch((error) => {
-      res.badRequest('signup', 'Username or email already taken');
+      res.badRequest('signup', error.toString());
       // User
       //   .findOne({username: req.body.username})
       //   .exec()
@@ -57,20 +57,54 @@ function usersEdit(req, res) {
     .then((entry) => res.render('users/edit', {entry}))
 }
 
+// function usersUpdate(req, res) {
+//   User
+//     .findById(req.params.id)
+//     .exec()
+//     .then(entry => {
+//       entry = Object.assign(entry, req.body);
+//       entry.save();
+//       res.render('users/show', {entry})
+//     })
+//     // .catch((error) => {
+//     //   console.log('!!!error caught!!!', error);
+//     //   return res.badRequest('users/edit', 'An error occurred. Please try again');
+//     // })
+// }
+
 function usersUpdate(req, res) {
   User
     .findById(req.params.id)
     .exec()
     .then(entry => {
-      entry = Object.assign(entry, req.body);
-      return entry.save()
+      entry = Object.assign({username: entry.username, email: entry.email}, req.body);
+      res.render('users/show', {entry})
     })
-    .then(entry => res.render('users/show', {entry}))
+}
+
+function usersPasswordUpdate(req, res) {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then(entry => {
+      res.render('users/editPassword', {entry});
+    })
+}
+
+function usersPasswordEdit(req, res) {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then(entry => {
+      entry = Object.assign(entry, req.body);
+      entry.save();
+      res.render('users/show', {entry})
+    })
 }
 
 function usersShow(req, res) {
   User
-    .findById(req.params.id)
+    .findById(res.locals.currentUser)
     .exec()
     .then(entry => res.render('users/show', {entry}))
 }
@@ -82,5 +116,7 @@ module.exports = {
   delete: usersDelete,
   edit: usersEdit,
   update: usersUpdate,
-  show: usersShow
+  show: usersShow,
+  passwordUpdate: usersPasswordUpdate,
+  passwordEdit: usersPasswordEdit
 }

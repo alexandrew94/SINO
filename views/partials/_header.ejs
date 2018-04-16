@@ -6,7 +6,7 @@
 <a href="/">Home</a>
 <a href="/restaurants">All Restaurants</a>
 <% if (locals.isLoggedIn) {%>
-  <a href="/users">My Profile</a>
+  <a href="/users/show">My Profile</a>
   <form action="/signin" method="post">
     <input type="hidden" name="_method" value="delete">
     <button type="submit" name="button">Log out</button>

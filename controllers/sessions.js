@@ -13,7 +13,10 @@ function sessionsCreate(req, res) {
         return res.badRequest('signin', 'Wrong Credentials');
       }
       req.session.userId = user._id;
-      return res.redirect('/');
+      res.locals.currentUser = user;
+      res.locals.isLoggedIn = true;
+      req.flash('successful', 'you have logged in!');
+      return res.status(200).render('home');
     })
     .catch((error) => {
       return res.badRequest('signin', 'Wrong Credentials');

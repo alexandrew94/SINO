@@ -27,15 +27,18 @@ Restaurant.create([{
 User.create([{
     username: 'alexandrew94',
     email: 'alexandrew94@hotmail.com',
-    password: 'password'
+    password: 'password',
+    confirm_password: 'password'
   }, {
     username: 'stuffwhatever',
     email: 'hello@hello.com',
-    password: 'hello'
+    password: 'hello',
+    confirm_password: 'hello'
   }, {
     username: 'a',
     email: 'a@a.com',
-    password: 'a'
+    password: 'a',
+    confirm_password: 'a'
   }])
   .then(databaseEntry => console.log(`${databaseEntry.length} users created!`))
 

@@ -1,11 +1,13 @@
 <h1>Profile for <%= entry.username %></h1>
 <h2>Username: <%= entry.username %></h2>
 <p>Email: <%= entry.email %></p>
-<p>Password: <%= entry.password %></p>
+<form action="/users/<%= entry.id %>/edit" method="get">
+  <button>Edit</button>
+</form>
+<form action="/users/<%= entry.id %>/editpassword" method="get">
+  <button>Change password</button>
+</form>
 <form action="/users/<%= entry.id %>" method="post">
   <input type="hidden" name="_method" value="delete">
-  <button>Delete user</button>
-</form>
-<form action="/users/<%= entry.id %>/edit" method="get">
-  <button>Edit user</button>
+  <button>Delete</button>
 </form>

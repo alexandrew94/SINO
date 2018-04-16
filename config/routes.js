@@ -32,8 +32,8 @@ router.route('/restaurants')
 
 const users = require('../controllers/users');
 
-router.route('/users')
-  .get(users.index);
+// router.route('/users/show')
+  // .get(users.show);
 
 router.route('/users/:id')
   .put(users.update)
@@ -42,6 +42,10 @@ router.route('/users/:id')
 
 router.route('/users/:id/edit')
   .get(users.edit);
+
+router.route('/users/:id/editpassword')
+  .get(users.passwordUpdate)
+  .post(users.passwordEdit);
 
 router.route('/signup')
   .get(users.new)
