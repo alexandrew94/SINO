@@ -15,8 +15,8 @@ function sessionsCreate(req, res) {
       req.session.userId = user._id;
       res.locals.currentUser = user;
       res.locals.isLoggedIn = true;
-      req.flash('successful', 'you have logged in!');
-      return res.status(200).render('home');
+      req.flash('successful', 'Log in successful!');
+      return res.render('home');
     })
     .catch((error) => {
       return res.badRequest('signin', 'Wrong Credentials');
@@ -24,6 +24,7 @@ function sessionsCreate(req, res) {
 }
 
 function sessionsDelete(req, res) {
+  res.locals.isLoggedIn = false;
   return req.session.regenerate(() => res.redirect('/'));
 }
 

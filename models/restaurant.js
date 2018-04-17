@@ -3,9 +3,23 @@
 
 const mongoose = require('mongoose');
 
+// const restaurantSchema = new mongoose.Schema({
+//   name: { type: String, required: true },
+//   description: String,
+//   user: {type: mongoose.Schema.ObjectId, ref: 'User'},
+//   comments: [{type: mongoose.Schema.ObjectId, ref: 'Comment'}]
+// });
+const commentSchema = new mongoose.Schema({
+  user: {type: mongoose.Schema.ObjectId, ref: 'User'},
+  comment: String
+})
+
 const restaurantSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  description: String
-})
+  description: String,
+  user: {type: mongoose.Schema.ObjectId, ref: 'User'},
+  comments: [commentSchema]
+});
+
 
 module.exports = mongoose.model('Restaurant', restaurantSchema);

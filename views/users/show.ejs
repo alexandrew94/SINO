@@ -1,4 +1,4 @@
-<h1>Profile for <%= entry.username %></h1>
+<h1>Profile for <%= entry.username %>:</h1>
 <h2>Username: <%= entry.username %></h2>
 <p>Email: <%= entry.email %></p>
 <form action="/users/<%= entry.id %>/edit" method="get">
@@ -11,3 +11,18 @@
   <input type="hidden" name="_method" value="delete">
   <button>Delete</button>
 </form>
+<h1>My Restaurants:</h1>
+<% databaseEntries.forEach((entry) => { %>
+  <% if (entry.user && locals.currentUser && entry.user.toString() === locals.currentUser.id) { %>
+    <h2>Name: <%- entry.name %></h2>
+    <p>Description: <%- entry.description %></p>
+  <a href="/restaurants/<%= entry.id %>">Enter Restaurant</a>
+    <form action="/restaurants/<%= entry.id %>/edit" method="get">
+      <button>Edit</button>
+    </form>
+    <form action="/restaurants/<%= entry.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button>Delete</button>
+    </form>
+  <% } %>
+<% }) %>

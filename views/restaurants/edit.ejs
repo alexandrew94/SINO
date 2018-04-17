@@ -1,0 +1,9 @@
+<h1>Edit a restaurant</h1>
+<form action="/restaurants/<%= entry.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <label for="name_field">Restaurant Name:</label>
+  <input type="text" name="name" id="name_field" value="<%= entry.name %>" required>
+  <label for="description_field">Restaurant Description:</label>
+  <textarea name="description" rows="10" cols="30" id="description_field"><%= entry.description %></textarea>
+  <button type="submit" name="button">Submit</button>
+</form>

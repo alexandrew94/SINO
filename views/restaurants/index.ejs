@@ -1,5 +1,19 @@
+<% if (messages.successful) { %>
+  <h2><%= messages.successful %></h2>
+<% } %>
+<a href="/restaurants/new">Add a restaurant</a>
 <h1>Index of restaurants:</h1>
 <% databaseEntries.forEach((entry) => { %>
   <h2>Name: <%- entry.name %></h2>
   <p>Description: <%- entry.description %></p>
+  <a href="/restaurants/<%= entry.id %>">Enter Restaurant</a>
+  <% if (entry.user && locals.currentUser && entry.user.toString() === locals.currentUser.id) { %>
+    <form action="/restaurants/<%= entry.id %>/edit" method="get">
+      <button>Edit</button>
+    </form>
+    <form action="/restaurants/<%= entry.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button>Delete</button>
+    </form>
+  <% } %>
 <% }) %>

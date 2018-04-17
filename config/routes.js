@@ -28,6 +28,18 @@ const restaurants = require('../controllers/restaurants');
 router.route('/restaurants')
   .get(restaurants.index);
 
+router.route('/restaurants/new')
+  .get(restaurants.new)
+  .post(restaurants.create);
+
+router.route('/restaurants/:id')
+  .delete(restaurants.delete)
+  .put(restaurants.update)
+  .get(restaurants.show);
+
+router.route('/restaurants/:id/edit')
+  .get(restaurants.edit);
+
 // Resource users
 
 const users = require('../controllers/users');
@@ -54,6 +66,16 @@ router.route('/signup')
 // Sign in
 
 const sessions = require('../controllers/sessions');
+
+//Resource comment
+
+const comments = require('../controllers/comments');
+
+router.route('/restaurants/:id/comment')
+  .post(comments.create);
+
+router.route('/restaurants/:restaurantId/comment/:commentId')
+  .delete(comments.delete);
 
 router.route('/signin')
   .get(sessions.new)

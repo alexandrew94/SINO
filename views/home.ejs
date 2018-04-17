@@ -2,7 +2,13 @@
   <% if (messages.successful) { %>
     <h2><%= messages.successful %></h2>
   <% } %>
-  <h3>Welcome, <%= locals.currentUser.username %>.</h3>
+  <div class="landing-page">
+    <h2>Welcome, <%= locals.currentUser.username %>.</h2>
+  </div>
 <% } else { %>
-  <h3>Welcome to the landing page. Please log in or sign up.</h3>
+  <div class="landing-page">
+    <h1 class="landing-page-title">SINO</h1>
+    <h2 class="landing-page-subtitle">London's Chinese food, reviewed.</h2>
+    <h3 class="landing-page-call-to-action">Please <a class="landing-page-link" href="/signin">sign in</a>, <a class="landing-page-link" href="/signup">sign up</a>, or simply <a class="landing-page-link"href="/restaurants">browse</a>.</h3>
+  </div>
 <% } %>

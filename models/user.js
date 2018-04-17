@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
-  email: { type: String, required: true, unique: true},
+  email: { type: String, required: true, unique: true },
   password: { type: String, required: true}
 })
 
@@ -34,7 +34,9 @@ userSchema.pre('validate', function checkPasswordConfirmation(next) {
 })
 
 userSchema.pre('save', function hashPassword(next) {
-  this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8));
+  if(this.isModified('password')) {
+    this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8));
+  };
   next();
 })
 

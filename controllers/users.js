@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Restaurant = require('../models/restaurant');
 
 function usersIndex(req, res) {
   User
@@ -18,7 +19,8 @@ function usersCreate(req, res) {
     .create(req.body)
     .then((user) => {
       req.session.userId = user._id;
-      return res.status(200).render('home', { messages: 'Sign up successful!' });
+      req.flash('successful', 'Sign up successful!');
+      return res.render('home');
     })
     .catch((error) => {
       res.badRequest('signup', error.toString());
@@ -77,9 +79,17 @@ function usersUpdate(req, res) {
     .findById(req.params.id)
     .exec()
     .then(entry => {
-      entry = Object.assign({username: entry.username, email: entry.email}, req.body);
-      res.render('users/show', {entry})
-    })
+      entry = Object.assign(entry, req.body);
+      entry
+        .save()
+        .then(entry => {
+          return res.render('users/show', {entry})
+        })
+        .catch(error => {
+          req.flash('danger', 'Username or email is already taken.');
+          return res.redirect(`/users/${entry._id}/edit`);
+        })
+    });
 }
 
 function usersPasswordUpdate(req, res) {
@@ -87,7 +97,7 @@ function usersPasswordUpdate(req, res) {
     .findById(req.params.id)
     .exec()
     .then(entry => {
-      res.render('users/editPassword', {entry});
+      return res.render('users/editPassword', {entry});
     })
 }
 
@@ -97,16 +107,34 @@ function usersPasswordEdit(req, res) {
     .exec()
     .then(entry => {
       entry = Object.assign(entry, req.body);
-      entry.save();
-      res.render('users/show', {entry})
+      entry
+        .save()
+        .then(entry => {
+          res.render(`users/show`, {entry});
+        })
+        .catch(error => {
+          req.flash('danger', 'Passwords do not match.');
+          return res.redirect(`/users/${entry._id}/editpassword`);
+        })
     })
+    // .catch((error) => {
+    //   console.log('PASSWORD CONFIRMATION ERROR', error)
+    //   res.badRequest('users/show', error);
+    // })
 }
 
 function usersShow(req, res) {
   User
     .findById(res.locals.currentUser)
     .exec()
-    .then(entry => res.render('users/show', {entry}))
+    .then((entry) => {
+      Restaurant
+        .find()
+        .exec()
+        .then(databaseEntries => {
+          res.render('users/show', {entry, databaseEntries})
+        })
+    })
 }
 
 module.exports = {

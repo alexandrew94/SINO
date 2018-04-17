@@ -8,5 +8,7 @@
   <input type="text" name="username" value="<%= entry.username %>" id="username_field" required>
   <label for="email_field">Email:</label>
   <input type="email" name="email" value="<%= entry.email %>" id="email_field" required>
+  <input type="hidden" name="password" value="<%= entry.password %>" required>
+  <input type="hidden" name="confirm_password" value="<%= entry.password %>" required>
   <button type="submit" name="button">Submit</button>
 </form>
