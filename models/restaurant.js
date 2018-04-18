@@ -19,7 +19,7 @@ const restaurantSchema = new mongoose.Schema({
   name: { type: String, required: true },
   description: String,
   cuisine: String,
-  image: String,
+  image: [],
   address: String,
   postcode: String,
   user: {type: mongoose.Schema.ObjectId, ref: 'User'},

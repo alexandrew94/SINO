@@ -3,7 +3,7 @@
   <form action="new" method="post">
     <div class="row">
       <div class="input-field col s12 m6">
-        <label for="name_field">Restaurant Name:</label>
+        <label for="name_field">Restaurant Name: (required)</label>
         <input class="validate" type="text" name="name" id="name_field" required>
       </div>
     </div>
@@ -29,8 +29,16 @@
         <label for="cuisine_field">Cuisine:</label>
       </div>
       <div class="input-field col s12 m6">
-        <label for="image_field">Image Link:</label>
-        <input type="text" name="image" id="image_field">
+        <label for="image_field">Image Link 1: (cover image)</label>
+        <input type="text" name="image[0]" id="image_field">
+      </div>
+      <div class="input-field col s12 m6">
+        <label for="image_field">Image Link 2:</label>
+        <input type="text" name="image[1]" id="image_field">
+      </div>
+      <div class="input-field col s12 m6">
+        <label for="image_field">Image Link 3:</label>
+        <input type="text" name="image[2]" id="image_field">
       </div>
     </div>
     <div class="row">

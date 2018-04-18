@@ -41,9 +41,15 @@
     <% } %>
   </div>
   <div class="row">
-    <% if (entry.image) { %>
-      <div class="col s1 m8">
-        <img class="show-image" src="<%- entry.image %>">
+    <% if (entry.image[0] || entry.image[1] || entry.image[2]) { %>
+      <div class="carousel carousel-slider center col s12 m8">
+        <% entry.image.forEach(function(element, index) { %>
+          <% if (element) { %>
+            <div class="carousel-item red white-text">
+              <img class="show-image" src="<%- element %>">
+            </div>
+          <% } %>
+        <% }) %>
       </div>
     <% } %>
     <% if (entry.postcode) { %>

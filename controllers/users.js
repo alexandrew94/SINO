@@ -49,7 +49,10 @@ function usersDelete(req, res) {
     .exec()
     .then((entry) => {
       entry.remove();
-      return req.session.regenerate(() => res.redirect('/'))
+      return req.session.regenerate(() => {
+        req.flash('successful', 'Deletion successful!');
+        return res.redirect('/');
+      })
     })
 }
 
