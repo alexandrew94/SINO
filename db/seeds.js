@@ -17,14 +17,20 @@ Comment.collection.drop();
 Restaurant.create([{
     name: 'Pizza Union',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    image: 'https://fthmb.tqn.com/wpny0hfXAARYzNpvAgVuMhvITtM=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/beef-and-vegetable-stir-fry-165955462-58854ce95f9b58bdb39e9209.jpg',
+    postcode: 'W1D 6PY',
     user: "5ad5af49e9a3082bf332ab20"
   }, {
     name: 'Blech',
     description: 'This is a second description.',
+    image: 'https://t5dw12a2mxz42vnqk1utxqwi-wpengine.netdna-ssl.com/wp-content/uploads/sites/2/2017/12/IMG_1339.jpg',
+    postcode: 'NW1 2AR',
     user: "5ad5af49e9a3082bf332ab20"
   }, {
     name: 'Third restaurant',
     description: 'Lol whatever some description.',
+    image: 'https://metrouk2.files.wordpress.com/2018/01/pri_65905878.jpg?w=748&h=498&crop=1',
+    postcode: 'E1 6EW',
     user: "5ad5af49e9a3082bf332ab20"
   }])
   .then(databaseEntry => console.log(`${databaseEntry.length} restaurants created!`))

@@ -20,7 +20,7 @@ function usersCreate(req, res) {
     .then((user) => {
       req.session.userId = user._id;
       req.flash('successful', 'Sign up successful!');
-      return res.render('home');
+      return res.redirect('/');
     })
     .catch((error) => {
       res.badRequest('signup', error.toString());

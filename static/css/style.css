@@ -1,18 +1,31 @@
 * {
   font-family: 'Open Sans', sans-serif;
+  line-height: 1.5em;
 }
 
 h1 {
   font-family: 'Poiret One', cursive;
 }
 
+/* .nav-wrapper {
+  background-color: #963737;
+} */
+
 .landing-page {
-  background-image: url("../images/cover-image.jpg");
+  background-image: url("../images/cover-image-2.jpg");
+  /* background-image: url("https://www.standard.co.uk/s3fs-public/styles/story_large/public/thumbnails/image/2017/01/28/15/an114465565london-england-.jpg") */
   width: 100vw;
-  height: 70vh;
+  height: 98vh;
   text-align: center;
   padding-top: 3vh;
   color: white;
+}
+
+.landing-page-inner {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  margin: 0 10vw;
 }
 
 .landing-page-title {
@@ -33,4 +46,28 @@ h1 {
 .landing-page-link {
   text-decoration: underline;
   color: white;
+}
+
+.brand-logo {
+  font-family: 'Poiret One', cursive;
+}
+
+.nav-wrapper {
+  padding: 0 20px;
+}
+
+.message {
+  font-size: 16px;
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 20px;
+}
+
+.danger {
+  background-color: #e53935;
+}
+
+.successful {
+  background-color: #7cb342;
 }

@@ -17,6 +17,8 @@ const commentSchema = new mongoose.Schema({
 const restaurantSchema = new mongoose.Schema({
   name: { type: String, required: true },
   description: String,
+  image: String,
+  postcode: String,
   user: {type: mongoose.Schema.ObjectId, ref: 'User'},
   comments: [commentSchema]
 });

@@ -1,14 +1,23 @@
+<% if (messages.danger) { %>
+  <h3 class="danger message"><%= messages.danger %>
+  </h3>
+<% } %>
 <% if (locals.isLoggedIn) { %>
   <% if (messages.successful) { %>
-    <h2><%= messages.successful %></h2>
+    <h3 class="successful message"><%= messages.successful %></h3>
   <% } %>
   <div class="landing-page">
-    <h2>Welcome, <%= locals.currentUser.username %>.</h2>
+    <div class="landing-page-inner">
+      <h2>Hi there, <%= locals.currentUser.username %>.</h2>
+      <h3 class="landing-page-call-to-action">Browse our <a class="landing-page-link" href="/restaurants">restaurants</a>, or check your <a class="landing-page-link" href="/users/<%= locals.currentUser._id %>">profile</a>.</h3>
+    </div>
   </div>
 <% } else { %>
   <div class="landing-page">
-    <h1 class="landing-page-title">SINO</h1>
-    <h2 class="landing-page-subtitle">London's Chinese food, reviewed.</h2>
-    <h3 class="landing-page-call-to-action">Please <a class="landing-page-link" href="/signin">sign in</a>, <a class="landing-page-link" href="/signup">sign up</a>, or simply <a class="landing-page-link"href="/restaurants">browse</a>.</h3>
+    <div class="landing-page-inner">
+      <h1 class="landing-page-title">SINO</h1>
+      <h2 class="landing-page-subtitle">London's Chinese food, reviewed.</h2>
+      <h3 class="landing-page-call-to-action">Please <a class="landing-page-link" href="/signin">sign in</a>, <a class="landing-page-link" href="/signup">sign up</a>,<br>or simply <a class="landing-page-link"href="/restaurants">browse</a>.</h3>
+    </div>
   </div>
 <% } %>

@@ -1,5 +1,5 @@
 <% if (messages.danger) { %>
-  <h2>! <%= messages.danger %> !</h2>
+  <h3 class="danger message"><%= messages.danger %></h3>
 <% } %>
 <h1>Edit <%= entry.name %></h1>
 <form action="/users/<%= entry.id %>" method="post">

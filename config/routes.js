@@ -82,4 +82,11 @@ router.route('/signin')
   .post(sessions.create)
   .delete(sessions.delete);
 
+// Error handling
+
+router.route('/*').get((req, res) => {
+  req.flash('danger', 'The URL requested does not exist.');
+  res.redirect('/');
+})
+
 module.exports = router;

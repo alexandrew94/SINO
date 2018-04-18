@@ -36,6 +36,7 @@ function restaurantsDelete(req, res) {
     .then((entry) => {
       console.log(entry);
       entry.remove();
+      req.flash('successful', 'Restaurant was successfully deleted.')
       return res.redirect('/restaurants')
     })
 };

@@ -1,2 +1,41 @@
 <%# This will have footer content %>
-<p>Made by Andrew Xu</p>
+<footer class="page-footer red darken-4">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">About Us</h5>
+        <p class="grey-text text-lighten-4">Review, share and browse your favourite Chinese restaurants in London.</p>
+        <h5 class="white-text">Contact Us</h5>
+        <p class="grey-text text-lighten-4"><i class="fas fa-phone"></i>: +44 (0)7429 232473</p>
+        <p class="grey-text text-lighten-4"><i class="fas fa-at"></i>: chenyangxuandrew@gmail.com</p>
+        <br>
+        <p class="grey-text text-lighten-4"><em>By continuing to use this site, you agree to our use of cookies.</em></p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Quick Nav</h5>
+        <ul>
+          <% if (locals.isLoggedIn) {%>
+            <li><p>Currently Logged in as <%= locals.currentUser.username %></p></li>
+            <li><a class="grey-text text-lighten-4" href="/users/show">My Profile</a></li>
+            <li><form action="/signin" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit" name="button">Log out</button>
+            </form></li>
+          <% } else { %>
+            <li><a class="grey-text text-lighten-4" href="/signup">Sign Up</a></li>
+            <li><a class="grey-text text-lighten-4" href="/signin">Sign In</a></li>
+          <% } %>
+          <br>
+          <li><a class="grey-text text-lighten-4" href="/">Home</a></li>
+          <li><a class="grey-text text-lighten-4" href="/restaurants">Restaurants</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+    © 2018 Andrew Xu
+    <%# <a class="grey-text text-lighten-4 right" href="#!">More Links</a> %>
+    </div>
+  </div>
+</footer>
