@@ -1,14 +1,14 @@
 <% if (messages.danger) { %>
-  <h3 class="danger message"><%= messages.danger %>
+  <h3 class="danger message"><i class="fas fa-exclamation-circle"></i> &nbsp<%= messages.danger %>
   </h3>
 <% } %>
 <% if (locals.isLoggedIn) { %>
   <% if (messages.successful) { %>
-    <h3 class="successful message"><%= messages.successful %></h3>
+    <h3 class="successful message"><i class="fas fa-check"></i> &nbsp<%= messages.successful %></h3>
   <% } %>
   <div class="landing-page">
     <div class="landing-page-inner">
-      <h2>Hi there, <%= locals.currentUser.username %>.</h2>
+      <h2>👋 Hi there, <%= locals.currentUser.username %>.</h2>
       <h3 class="landing-page-call-to-action">Browse our <a class="landing-page-link" href="/restaurants">restaurants</a>, or check your <a class="landing-page-link" href="/users/<%= locals.currentUser._id %>">profile</a>.</h3>
     </div>
   </div>

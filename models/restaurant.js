@@ -11,13 +11,16 @@ const mongoose = require('mongoose');
 // });
 const commentSchema = new mongoose.Schema({
   user: {type: mongoose.Schema.ObjectId, ref: 'User'},
+  rating: Number,
   comment: String
 })
 
 const restaurantSchema = new mongoose.Schema({
   name: { type: String, required: true },
   description: String,
+  cuisine: String,
   image: String,
+  address: String,
   postcode: String,
   user: {type: mongoose.Schema.ObjectId, ref: 'User'},
   comments: [commentSchema]

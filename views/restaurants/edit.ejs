@@ -1,11 +1,53 @@
-<h1>Edit a restaurant</h1>
-<form action="/restaurants/<%= entry.id %>" method="post">
-  <input type="hidden" name="_method" value="put">
-  <label for="name_field">Restaurant Name:</label>
-  <input type="text" name="name" id="name_field" value="<%= entry.name %>" required>
-  <label for="description_field">Restaurant Description:</label>
-  <textarea name="description" rows="10" cols="30" id="description_field"><%= entry.description %></textarea>
-  <label for="image_field">Restaurant Name:</label>
-  <input type="text" name="image" id="image_field" value="<%= entry.image %>" required>
-  <button type="submit" name="button">Submit</button>
-</form>
+<div class="container">
+  <h1>Edit <%= entry.name %></h1>
+  <div class="row">
+    <form class="col s12" action="/restaurants/<%= entry.id %>" method="post">
+      <input type="hidden" name="_method" value="put">
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <label for="name_field">Restaurant Name:</label>
+          <input class="validate" type="text" name="name" id="name_field" value="<%= entry.name %>" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <label for="description_field">Restaurant Description:</label>
+          <textarea class="materialize-textarea" name="description" rows="10" cols="30" id="description_field"><%= entry.description %></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <select name="cuisine" id="cuisine_field">
+            <option value="<%= entry.cuisine %>"><%= entry.cuisine %></option>
+            <option value="Cantonese">Cantonese</option>
+            <option value="Shandong/Huaiyang">Shandong/Huaiyang</option>
+            <option value="Jiangsu">Jiangsu</option>
+            <option value="Zhejiang">Zhejiang</option>
+            <option value="Sichuan">Sichuan</option>
+            <option value="Fusion">Fusion</option>
+            <option value="Generic">Generic</option>
+            <option value="Other">Other</option>
+          </select>
+          <label for="cuisine_field">Cuisine:</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <label for="image_field">Image Link:</label>
+          <input type="text" name="image" id="image_field" value="<%= entry.image %>">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <label for="address_field">Address:</label>
+          <input type="text" name="address" id="address_field">
+        </div>
+        <div class="input-field col s6">
+          <label for="post_code">Post Code:</label>
+          <input type="text" name="postcode" id="post_code">
+        </div>
+        <div class="submission">
+          <button class="waves-effect waves-light btn-large green lighten-1" type="submit" name="button">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -7,9 +7,17 @@ h1 {
   font-family: 'Poiret One', cursive;
 }
 
+strong {
+  font-weight: 600;
+}
+
 /* .nav-wrapper {
   background-color: #963737;
 } */
+
+.page-footer {
+  line-height: 1.5em;
+}
 
 .landing-page {
   background-image: url("../images/cover-image-2.jpg");
@@ -70,4 +78,59 @@ h1 {
 
 .successful {
   background-color: #7cb342;
+}
+
+.message-link {
+  text-decoration: underline;
+  color: white;
+}
+
+.large-map {
+  margin: 0 auto;
+  display: block;
+  -webkit-box-shadow: 0px 0px 51px -5px rgba(0,0,0,0.68);
+  -moz-box-shadow: 0px 0px 51px -5px rgba(0,0,0,0.68);
+  box-shadow: 0px 0px 51px -5px rgba(0,0,0,0.68);
+  margin-bottom: 20px;
+}
+
+.btn {
+  margin: 10px;
+}
+
+.btn-small {
+  margin: 5px;
+}
+
+.btn-large {
+  display: block;
+  margin: 0 auto;
+}
+
+.fa-star {
+  color: #ffae00;
+}
+
+.page-title {
+  text-align: center;
+}
+
+.submission {
+  text-align: center;
+}
+
+.show-image {
+  width: 100%;
+}
+
+.show-page-rating {
+  font-size: 24px;
+}
+
+.avg-user-rating {
+  font-size: 14px;
+}
+
+form {
+  display: inline;
 }

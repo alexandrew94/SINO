@@ -1,40 +1,60 @@
 <% if (messages.successful) { %>
-  <h3 class="successful message"><%= messages.successful %></h3>
+  <h3 class="successful message"><i class="fas fa-check"></i> &nbsp<%= messages.successful %></h3>
+<% } %>
+<% if (!locals.isLoggedIn) { %>
+  <h3 class="danger message">Please <a class="message-link" href="/signin">sign in</a> or <a class="message-link" href="/signup">sign up</a> to add and edit restaurants.</h3>
 <% } %>
 <div class="container">
-  <h1>Restaurants:</h1>
-  <% if (locals.isLoggedIn) { %>
-    <a href="/restaurants/new">Add a restaurant</a>
-  <% } else { %>
-    Please <a href="/signin">sign in</a> or <a href="/signup">sign up</a> to add a restaurant.
-  <% } %>
-  <% let postcodes = "http://maps.googleapis.com/maps/api/staticmap?zoom=12&size=400x400&"%>
+  <div class="restaurants-titles center-align">
+    <h1 class="page-title">Restaurants:</h1>
+    <% if (locals.isLoggedIn) { %>
+      <a class="waves-effect waves-light btn-large green lighten-1" href="restaurants/new"><i class="fas fa-plus"></i> &nbsp;Add my restaurant</a>
+    <% } %>
+  </div>
+  <br>
+  <% let postcodes = "http://maps.googleapis.com/maps/api/staticmap?center=London,UK&zoom=12&size=640x320&"%>
   <% databaseEntries.forEach((entry) => { %>
     <% if (!!entry.postcode) { %>
       <% postcodes += "&markers=color:0xe57373%7C" + entry.postcode.split(' ').join(''); %>
     <% } %>
   <% }) %>
   <% postcodes += '"&key=AIzaSyDH5wP4WVr1VDXiOQroP-i4LFvc2aIp-RM'%>
-  <% console.log('POSTCODES!', postcodes) %>
-  <img src="<%- postcodes %>">
+  <img class="large-map" src="<%- postcodes %>">
   <div class="row">
     <% databaseEntries.forEach((entry) => { %>
       <div class="col s6 m4">
         <div class="card sticky-action">
           <div class="card-image waves-effect waves-block waves-light">
-            <% console.log('THE URL FOR THE IMAGE!', entry.image)%>
             <img class="activator" src="<%- entry.image %>">
           </div>
           <div class="card-content">
+          <span>
+            <% let totalRatings = 0; %>
+            <% let numberRatings = 0; %>
+            <% entry.comments.forEach(comment => { %>
+              <% if (comment.rating) { %>
+                <% numberRatings++; %>
+                <% totalRatings += comment.rating; %>
+              <% } %>
+            <% }) %>
+            <% let finalRating = Math.round(totalRatings/numberRatings) %>
+            <% for (let i = 0; i < finalRating; i++) { %>
+              <i class="fas fa-star"></i>
+            <% } %>
+            <span class="text-lighten-1 grey-text avg-user-rating">(<%- entry.comments.length %> reviews/ratings)</span>
+          </span>
             <span class="card-title activator grey-text text-darken-4"><%- entry.name %><i class="material-icons right">more_vert</i></span>
+            <% if (entry.cuisine) { %>
+              <p>Cuisine: <%- entry.cuisine %></p>
+            <% } %>
             <% if (entry.user && locals.currentUser && entry.user.toString() === locals.currentUser.id) { %>
-                <form action="/restaurants/<%= entry.id %>/edit" method="get">
-                  <button>Edit</button>
-                </form>
-                <form action="/restaurants/<%= entry.id %>" method="post">
-                  <input type="hidden" name="_method" value="delete">
-                  <button>Delete</button>
-                </form>
+              <form action="/restaurants/<%= entry.id %>/edit" method="get">
+                <button class="btn-small green lighten-1"><i class="fas fa-edit"></i> &nbsp;Edit</button>
+              </form>
+              <form action="/restaurants/<%= entry.id %>" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button class="btn-small red lighten-1"><i class="fas fa-trash-alt"></i></i> &nbsp;Delete</button>
+              </form>
             <% } %>
           </div>
           <div class="card-reveal">

@@ -23,6 +23,7 @@ function usersCreate(req, res) {
       return res.redirect('/');
     })
     .catch((error) => {
+      res.badRequest('signup', 'Your username or email is already taken.');
       res.badRequest('signup', error.toString());
       // User
       //   .findOne({username: req.body.username})
@@ -83,7 +84,12 @@ function usersUpdate(req, res) {
       entry
         .save()
         .then(entry => {
-          return res.render('users/show', {entry})
+          Restaurant
+            .find()
+            .exec()
+            .then(databaseEntries => {
+              res.render('users/show', {entry, databaseEntries})
+            })
         })
         .catch(error => {
           req.flash('danger', 'Username or email is already taken.');
@@ -110,7 +116,13 @@ function usersPasswordEdit(req, res) {
       entry
         .save()
         .then(entry => {
-          res.render(`users/show`, {entry});
+          Restaurant
+            .find()
+            .exec()
+            .then(databaseEntries => {
+              res.render('users/show', {entry, databaseEntries})
+            })
+          // res.render(`users/show`, {entry});
         })
         .catch(error => {
           req.flash('danger', 'Passwords do not match.');

@@ -6,6 +6,7 @@ const Comment = require('../models/comment');
 function restaurantsIndex(req, res) {
   Restaurant
     .find()
+    .populate('comments')
     .exec()
     .then((databaseEntries) => {
       res.render('restaurants/index', {databaseEntries});
@@ -65,6 +66,7 @@ function restaurantsUpdate(req, res) {
 function restaurantsShow(req, res) {
   Restaurant
     .findById(req.params.id)
+    .populate('user')
     .populate('comments.user')
     .exec()
     .then((entry) => {

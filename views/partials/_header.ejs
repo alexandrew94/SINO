@@ -5,19 +5,19 @@
       <% if (locals.isLoggedIn) { %>
         <li class="grey-text text-lighten-1">(Signed in as <%= locals.currentUser.username %>)</li>
       <% } %>
-      <li><a href="/">Home</a></li>
-      <li><a href="/restaurants">Restaurants</a></li>
+      <li><a href="/"><i class="fas fa-home"></i> &nbsp;Home</a></li>
+      <li><a href="/restaurants"><i class="fas fa-utensils"></i> &nbsp;Restaurants</a></li>
       <% if (locals.isLoggedIn) {%>
-        <li><a href="/users/show">My Profile</a></li>
+        <li><a href="/users/show"><i class="fas fa-user"></i> &nbsp;My Profile</a></li>
         <li>
           <form action="/signin" method="post">
             <input type="hidden" name="_method" value="delete">
-              <button class="btn waves-effect waves-light red lighten-1" type="submit" name="button">Sign Out</button>
+              <button class="btn waves-effect waves-light red lighten-1" type="submit" name="button"><i class="fas fa-sign-out-alt"></i> &nbsp;Sign Out</button>
           </form>
         </li>
       <% } else { %>
-        <li><a href="/signup">Sign Up</a></li>
-        <li><a href="/signin">Sign In</a></li>
+        <li><a href="/signup"><i class="fas fa-user-plus"></i> &nbsp;Sign Up</a></li>
+        <li><a class="btn waves-effect waves-light red lighten-1" href="/signin"><i class="fas fa-sign-in-alt"></i> &nbsp;Sign In</a></li>
       <% } %>
     </ul>
   </div>

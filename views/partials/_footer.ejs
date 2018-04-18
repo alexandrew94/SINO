@@ -15,11 +15,11 @@
         <h5 class="white-text">Quick Nav</h5>
         <ul>
           <% if (locals.isLoggedIn) {%>
-            <li><p>Currently Logged in as <%= locals.currentUser.username %></p></li>
+            <li><p>Currently logged in as <%= locals.currentUser.username %></p></li>
             <li><a class="grey-text text-lighten-4" href="/users/show">My Profile</a></li>
             <li><form action="/signin" method="post">
               <input type="hidden" name="_method" value="delete">
-              <button type="submit" name="button">Log out</button>
+              <button class="btn waves-effect waves-light red lighten-1" type="submit" name="button"><i class="fas fa-sign-out-alt"></i> &nbsp;Sign Out</button>
             </form></li>
           <% } else { %>
             <li><a class="grey-text text-lighten-4" href="/signup">Sign Up</a></li>

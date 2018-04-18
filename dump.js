@@ -21,3 +21,15 @@
     </div>
   </div>
 </div>
+
+<div class="input-field col s6 m3">
+  <select name="rating" id="rating_field" value="<%= entry.rating %>">
+    <option disabled selected value="<%= entry.rating %>"><% for (let i = 0; i < entry.rating; i++) {%>⭐<%} %></option>
+    <option value="1">⭐</option>
+    <option value="2">⭐⭐</option>
+    <option value="3">⭐⭐⭐</option>
+    <option value="4">⭐⭐⭐⭐</option>
+    <option value="5">⭐⭐⭐⭐⭐</option>
+  </select>
+  <label>Rating:</label>
+</div>

@@ -1,12 +1,50 @@
-<h1>Add a new restaurant</h1>
-<form action="new" method="post">
-  <label for="name_field">Restaurant Name:</label>
-  <input type="text" name="name" id="name_field" required>
-  <label for="name_field">Restaurant Description:</label>
-  <textarea name="description" rows="10" cols="30" id="description_field"></textarea>
-  <label for="image_field">Image Link:</label>
-  <input type="text" name="image" id="name_field">
-  <label for="post_code">Image Link:</label>
-  <input type="text" name="postcode" id="post_code">
-  <button type="submit" name="button">Submit</button>
-</form>
+<div class="container">
+  <h1>Adding my restaurant</h1>
+  <form action="new" method="post">
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <label for="name_field">Restaurant Name:</label>
+        <input class="validate" type="text" name="name" id="name_field" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <label for="description_field">Restaurant Description:</label>
+        <textarea class="materialize-textarea" name="description" rows="10" cols="30" id="description_field"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <select name="cuisine" id="cuisine_field">
+          <option selected disabled value="">Select a cuisine</option>
+          <option value="Cantonese">Cantonese</option>
+          <option value="Shandong/Huaiyang">Shandong/Huaiyang</option>
+          <option value="Jiangsu">Jiangsu</option>
+          <option value="Zhejiang">Zhejiang</option>
+          <option value="Sichuan">Sichuan</option>
+          <option value="Fusion">Fusion</option>
+          <option value="Generic">Generic</option>
+          <option value="Other">Other</option>
+        </select>
+        <label for="cuisine_field">Cuisine:</label>
+      </div>
+      <div class="input-field col s12 m6">
+        <label for="image_field">Image Link:</label>
+        <input type="text" name="image" id="image_field">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <label for="address_field">Address:</label>
+        <input type="text" name="address" id="address_field">
+      </div>
+      <div class="input-field col s6">
+        <label for="post_code">Post Code:</label>
+        <input type="text" name="postcode" id="post_code">
+      </div>
+      <div class="submission">
+        <button class="waves-effect waves-light btn-large green lighten-1" type="submit" name="button">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
