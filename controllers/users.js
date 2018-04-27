@@ -94,7 +94,7 @@ function usersUpdate(req, res) {
               res.render('users/show', {entry, databaseEntries})
             })
         })
-        .catch(error => {
+        .catch(() => {
           req.flash('danger', 'Username or email is already taken.');
           return res.redirect(`/users/${entry._id}/edit`);
         })

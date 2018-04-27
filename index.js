@@ -54,4 +54,12 @@ app.use((req, res, next) => {
 
 app.use(router);
 
+app.use((err, req, res, next) => {
+  err.status = err.status || 500;
+  err.message = err.message || 'Internal Server Error';
+  res.status(err.status);
+  res.locals.err = err;
+  return res.render(`statics/${err.status}`);
+});
+
 app.listen(port, () => console.log(`Running on port ${port}`));

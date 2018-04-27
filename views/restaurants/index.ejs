@@ -2,7 +2,7 @@
   <h3 class="successful message"><i class="fas fa-check"></i> &nbsp<%= messages.successful %></h3>
 <% } %>
 <% if (!locals.isLoggedIn) { %>
-  <h3 class="danger message">Please <a class="message-link" href="/signin">sign in</a> or <a class="message-link" href="/signup">sign up</a> to add and edit restaurants.</h3>
+  <h3 class="danger message">Please <a class="message-link" href="/signin">sign in</a> or <a class="message-link" href="/signup">sign up</a> to add, edit and review restaurants.</h3>
 <% } %>
 <div class="container">
   <div class="restaurants-titles center-align">
@@ -22,10 +22,10 @@
   <img class="large-map" src="<%- postcodes %>">
   <div class="row">
     <% databaseEntries.forEach((entry) => { %>
-      <div class="col s6 m4">
+      <div class="col s6 m4" style="height: 400px;">
         <div class="card sticky-action">
-          <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="<%- entry.image[0] %>">
+          <div class="card-image waves-effect waves-block waves-light" style="max-height: 150px">
+          <img class="activator" src="<%- entry.image[0] %>">
           </div>
           <div class="card-content">
           <span>

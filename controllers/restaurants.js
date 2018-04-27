@@ -52,6 +52,8 @@ function restaurantsEdit(req, res) {
 function restaurantsUpdate(req, res) {
   Restaurant
     .findById(req.params.id)
+    .populate('user')
+    .populate('comments.user')
     .exec()
     .then(entry => {
       entry = Object.assign(entry, req.body);
@@ -61,6 +63,7 @@ function restaurantsUpdate(req, res) {
       req.flash('successful', 'Restaurant successfully edited!');
       return res.render('restaurants/show', {entry});
     })
+    .catch(err => console.log(err));
 }
 
 function restaurantsShow(req, res) {
