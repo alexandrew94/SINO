@@ -44,6 +44,27 @@ The app makes use of the Google Static Maps API to produce a map of all the rest
 
 ## Screenshots
 
+Main page displaying restaurants:
 ![Screenshot 1](./readme-images/screenshot1.png)
+
+Show page for a single restaurant:
 ![Screenshot 2](./readme-images/screenshot2.png)
+
+Viewing a user profile and the restaurants added by that user:
 ![Screenshot 3](./readme-images/screenshot3.png)
+
+## Code Examples
+
+Here are some of the code snippets in this project that I found the most challenging to write.
+
+_Example 1: Making a request to the Google Static Maps API._
+
+```javascript
+<% let postcodes = "http://maps.googleapis.com/maps/api/staticmap?center=London,UK&zoom=12&size=640x320&"%>
+<% databaseEntries.forEach((entry) => { %>
+  <% if (!!entry.postcode) { %>
+    <% postcodes += "&markers=color:0xe57373%7C" + entry.postcode.split(' ').join(''); %>
+  <% } %>
+<% }) %>
+<% postcodes += '"&key=AIzaSyDH5wP4WVr1VDXiOQroP-i4LFvc2aIp-RM'%>
+```
