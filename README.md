@@ -10,8 +10,8 @@
 * [Description](#description)
 * [Technologies Used](#technologies-used)
 * [Screenshots](#screenshots)
-<!-- * [Code Examples](#code-examples)
-* [Challenges](#challenges)
+* [Code Examples](#code-examples)
+<!-- * [Challenges](#challenges)
 * [Wins](#wins)
 * [The Future](#the-future) -->
 
@@ -74,6 +74,8 @@ _Example 1: Calculating and displaying the average ratings for each restaurant._
 <% } %>
 <span class="text-lighten-1 grey-text avg-user-rating">(<%- entry.comments.length %> reviews/ratings)</span>
 ```
+
+This code was used to calculate the average rating for each restaurant. This was fun to write, but maybe in retrospect it would've been better done as a virtual in the backend. A potential improvement might be to do half-stars.
 
 _Example 2: Making a request to the Google Static Maps API._
 
