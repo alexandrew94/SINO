@@ -68,3 +68,5 @@ _Example 1: Making a request to the Google Static Maps API._
 <% }) %>
 <% postcodes += '"&key=AIzaSyDH5wP4WVr1VDXiOQroP-i4LFvc2aIp-RM'%>
 ```
+
+This is far from the most elegant way of making a request to the Google Static Maps API, but it was quite an experience coming up with it since this was my first attempt at using an API of any sort. It used manual concatenation of the strings to make the URL of the image that would appear on the page.
