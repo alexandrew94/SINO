@@ -55,9 +55,27 @@ Viewing a user profile and the restaurants added by that user:
 
 ## Code Examples
 
-Here are some of the code snippets in this project that I found the most challenging to write.
+Here are some of the code snippets in this project that I found the most interesting and challenging to write.
 
-_Example 1: Making a request to the Google Static Maps API._
+_Example 1: Calculating and displaying the average ratings for each restaurant._
+
+```javascript
+<% let totalRatings = 0; %>
+<% let numberRatings = 0; %>
+<% entry.comments.forEach(comment => { %>
+  <% if (comment.rating) { %>
+    <% numberRatings++; %>
+    <% totalRatings += comment.rating; %>
+  <% } %>
+<% }) %>
+<% let finalRating = Math.round(totalRatings/numberRatings) %>
+<% for (let i = 0; i < finalRating; i++) { %>
+  <i class="fas fa-star"></i>
+<% } %>
+<span class="text-lighten-1 grey-text avg-user-rating">(<%- entry.comments.length %> reviews/ratings)</span>
+```
+
+_Example 2: Making a request to the Google Static Maps API._
 
 ```javascript
 <% let postcodes = "http://maps.googleapis.com/maps/api/staticmap?center=London,UK&zoom=12&size=640x320&"%>
