@@ -11,9 +11,8 @@
 * [Technologies Used](#technologies-used)
 * [Screenshots](#screenshots)
 * [Code Examples](#code-examples)
-<!-- * [Challenges](#challenges)
+* [Challenges](#challenges)
 * [Wins](#wins)
-* [The Future](#the-future) -->
 
 ## Link
 
@@ -90,3 +89,14 @@ _Example 2: Making a request to the Google Static Maps API._
 ```
 
 This is far from the most elegant way of making a request to the Google Static Maps API, but it was quite an experience coming up with it since this was my first attempt at using an API of any sort. It used manual concatenation of the strings to make the URL of the image that would appear on the page.
+
+## Challenges
+
+* Working with EJS for the first time
+* Working with a back end for the first time
+* Working with a database for the first time
+
+## Wins
+
+* Figuring out Google Static Maps
+* Learning and using the framework Materialize
