@@ -16,7 +16,7 @@
 
 ## Link
 
-* [Heroku](https://sino-review.herokuapp.com/)
+* [Heroku](https://sino-review.herokuapp.com/) (Login with email *a* and password *a* to try using the app.)
 
 ## Description
 
